@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+</head>
+<body>
+    <h1>Owner Dashboard</h1>
+    
+    <!-- Display list of existing menus -->
+    <h2>Your Current Menus</h2>
+    <ul>
+        <% if (menus.length > 0) { %>
+            <% menus.forEach(menu => { %>
+                <li>
+                    <strong><%= menu.mealType %></strong>
+                    <ul>
+                        <li>Monday: <%= menu.days.monday.item %> - $<%= menu.days.monday.price %></li>
+                        <li>Tuesday: <%= menu.days.tuesday.item %> - $<%= menu.days.tuesday.price %></li>
+                        <li>Wednesday: <%= menu.days.wednesday.item %> - $<%= menu.days.wednesday.price %></li>
+                        <li>Thursday: <%= menu.days.thursday.item %> - $<%= menu.days.thursday.price %></li>
+                        <li>Friday: <%= menu.days.friday.item %> - $<%= menu.days.friday.price %></li>
+                        <li>Saturday: <%= menu.days.saturday.item %> - $<%= menu.days.saturday.price %></li>
+                        <li>Sunday: <%= menu.days.sunday.item %> - $<%= menu.days.sunday.price %></li>
+
+                    </ul>
+                </li>
+            <% }); %>
+        <% } else { %>
+            <p>No menus available. Please add a menu.</p>
+        <% } %>
+    </ul>
+
+    <!-- Button to add a new menu -->
+    <a href="/add_menu">Add New Menu</a>
+
+</body>
+</html>
