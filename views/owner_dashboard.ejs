@@ -1,39 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Owner Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Owner Dashboard</h1>
-    
+
     <!-- Display list of existing menus -->
     <h2>Your Current Menus</h2>
+    <% menus.forEach(menu => { %>
+    <h3><%= menu.mealType %></h3>
     <ul>
-        <% if (menus.length > 0) { %>
-            <% menus.forEach(menu => { %>
-                <li>
-                    <strong><%= menu.mealType %></strong>
-                    <ul>
-                        <li>Monday: <%= menu.days.monday.item %> - $<%= menu.days.monday.price %></li>
-                        <li>Tuesday: <%= menu.days.tuesday.item %> - $<%= menu.days.tuesday.price %></li>
-                        <li>Wednesday: <%= menu.days.wednesday.item %> - $<%= menu.days.wednesday.price %></li>
-                        <li>Thursday: <%= menu.days.thursday.item %> - $<%= menu.days.thursday.price %></li>
-                        <li>Friday: <%= menu.days.friday.item %> - $<%= menu.days.friday.price %></li>
-                        <li>Saturday: <%= menu.days.saturday.item %> - $<%= menu.days.saturday.price %></li>
-                        <li>Sunday: <%= menu.days.sunday.item %> - $<%= menu.days.sunday.price %></li>
-
-                    </ul>
-                </li>
-            <% }); %>
-        <% } else { %>
-            <p>No menus available. Please add a menu.</p>
-        <% } %>
+      <li>
+        Monday: <% if (menu.days.monday && menu.days.monday[0]) { %> <%=
+        menu.days.monday[0].item %> - <%= menu.days.monday[0].price %> Rs <% }
+        else { %> No item available <% } %>
+      </li>
+      <li>
+        Tuesday: <% if (menu.days.tuesday && menu.days.tuesday[0]) { %> <%=
+        menu.days.tuesday[0].item %> - <%= menu.days.tuesday[0].price %> Rs <% }
+        else { %> No item available <% } %>
+      </li>
+      <li>
+        Wednesday: <% if (menu.days.wednesday && menu.days.wednesday[0]) { %>
+        <%= menu.days.wednesday[0].item %> - <%= menu.days.wednesday[0].price %>
+        Rs <% } else { %> No item available <% } %>
+      </li>
+      <li>
+        Thursday: <% if (menu.days.thursday && menu.days.thursday[0]) { %> <%=
+        menu.days.thursday[0].item %> - <%= menu.days.thursday[0].price %> Rs <%
+        } else { %> No item available <% } %>
+      </li>
+      <li>
+        Friday: <% if (menu.days.friday && menu.days.friday[0]) { %> <%=
+        menu.days.friday[0].item %> - <%= menu.days.friday[0].price %> Rs <% }
+        else { %> No item available <% } %>
+      </li>
+      <li>
+        Saturday: <% if (menu.days.saturday && menu.days.saturday[0]) { %> <%=
+        menu.days.saturday[0].item %> - <%= menu.days.saturday[0].price %> Rs <%
+        } else { %> No item available <% } %>
+      </li>
+      <li>
+        Sunday: <% if (menu.days.sunday && menu.days.sunday[0]) { %> <%=
+        menu.days.sunday[0].item %> - <%= menu.days.sunday[0].price %> Rs <% }
+        else { %> No item available <% } %>
+      </li>
     </ul>
+
+    <!-- Update Form for this specific menu -->
+    <h4>Update Menu for <%= menu.mealType %></h4>
+    <form action="/update_menu" method="POST">
+      <input type="hidden" name="mealType" value="<%= menu.mealType %>" />
+
+      <!-- Monday -->
+      <label for="mondayItem">Monday Item:</label>
+      <input
+        type="text"
+        name="mondayItem"
+        value="<%= menu.days.monday && menu.days.monday[0] ? menu.days.monday[0].item : '' %>"
+      />
+      <label for="mondayPrice">Monday Price:</label>
+      <input
+        type="number"
+        name="mondayPrice"
+        value="<%= menu.days.monday && menu.days.monday[0] ? menu.days.monday[0].price : '' %>"
+      /><br />
+
+      <!-- Tuesday -->
+      <label for="tuesdayItem">Tuesday Item:</label>
+      <input
+        type="text"
+        name="tuesdayItem"
+        value="<%= menu.days.tuesday && menu.days.tuesday[0] ? menu.days.tuesday[0].item : '' %>"
+      />
+      <label for="tuesdayPrice">Tuesday Price:</label>
+      <input
+        type="number"
+        name="tuesdayPrice"
+        value="<%= menu.days.tuesday && menu.days.tuesday[0] ? menu.days.tuesday[0].price : '' %>"
+      /><br />
+
+      <!-- Wednesday -->
+      <label for="wednesdayItem">Wednesday Item:</label>
+      <input
+        type="text"
+        name="wednesdayItem"
+        value="<%= menu.days.wednesday && menu.days.wednesday[0] ? menu.days.wednesday[0].item : '' %>"
+      />
+      <label for="wednesdayPrice">Wednesday Price:</label>
+      <input
+        type="number"
+        name="wednesdayPrice"
+        value="<%= menu.days.wednesday && menu.days.wednesday[0] ? menu.days.wednesday[0].price : '' %>"
+      /><br />
+
+      <!-- Thursday -->
+      <label for="thursdayItem">Thursday Item:</label>
+      <input
+        type="text"
+        name="thursdayItem"
+        value="<%= menu.days.thursday && menu.days.thursday[0] ? menu.days.thursday[0].item : '' %>"
+      />
+      <label for="thursdayPrice">Thursday Price:</label>
+      <input
+        type="number"
+        name="thursdayPrice"
+        value="<%= menu.days.thursday && menu.days.thursday[0] ? menu.days.thursday[0].price : '' %>"
+      /><br />
+
+      <!-- Friday -->
+      <label for="fridayItem">Friday Item:</label>
+      <input
+        type="text"
+        name="fridayItem"
+        value="<%= menu.days.friday && menu.days.friday[0] ? menu.days.friday[0].item : '' %>"
+      />
+      <label for="fridayPrice">Friday Price:</label>
+      <input
+        type="number"
+        name="fridayPrice"
+        value="<%= menu.days.friday && menu.days.friday[0] ? menu.days.friday[0].price : '' %>"
+      /><br />
+
+      <!-- Saturday -->
+      <label for="saturdayItem">Saturday Item:</label>
+      <input
+        type="text"
+        name="saturdayItem"
+        value="<%= menu.days.saturday && menu.days.saturday[0] ? menu.days.saturday[0].item : '' %>"
+      />
+      <label for="saturdayPrice">Saturday Price:</label>
+      <input
+        type="number"
+        name="saturdayPrice"
+        value="<%= menu.days.saturday && menu.days.saturday[0] ? menu.days.saturday[0].price : '' %>"
+      /><br />
+
+      <!-- Sunday -->
+      <label for="sundayItem">Sunday Item:</label>
+      <input
+        type="text"
+        name="sundayItem"
+        value="<%= menu.days.sunday && menu.days.sunday[0] ? menu.days.sunday[0].item : '' %>"
+      />
+      <label for="sundayPrice">Sunday Price:</label>
+      <input
+        type="number"
+        name="sundayPrice"
+        value="<%= menu.days.sunday && menu.days.sunday[0] ? menu.days.sunday[0].price : '' %>"
+      /><br />
+
+      <!-- Submit Button -->
+      <button type="submit">Update Menu</button>
+    </form>
+    <hr />
+    <% }) %>
 
     <!-- Button to add a new menu -->
     <a href="/add_menu">Add New Menu</a>
-
-</body>
+  </body>
 </html>

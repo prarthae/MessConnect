@@ -25,6 +25,9 @@ app.use(
 // Routes
 const indexRouter = require("./routes/index");
 const ownerRouter=require("./routes/owner");
+const menuRoutes = require("./routes/menu");
+
+app.use("/", menuRoutes);
 app.use("/", indexRouter);
 app.use("/",ownerRouter);
 
