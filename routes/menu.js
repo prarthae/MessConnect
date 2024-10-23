@@ -1,16 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const Menu = require("../models/menu"); // Import the Menu model
-
-// Middleware to check if the owner is logged in
-const checkOwnerAuth = (req, res, next) => {
-    if (req.session && req.session.ownerId) {
-      next();
-    } else {
-      res.redirect("/login");
-    }
-  };
-  
+const {checkOwnerAuth}=require("../middleware/auth");
+// // Middleware to check if the owner is logged in
+// const checkOwnerAuth = (req, res, next) => {
+//   if (req.session && req.session.ownerId) {
+//     next();
+//   } else {
+//     res.redirect("/login");
+//   }
+// };
 // Update Menu Route
 router.post("/update_menu", checkOwnerAuth, async (req, res) => {
   const {
@@ -30,7 +29,7 @@ router.post("/update_menu", checkOwnerAuth, async (req, res) => {
     sundayItem,
     sundayPrice,
   } = req.body;
-  
+
   const ownerId = req.session.ownerId;
 
   try {

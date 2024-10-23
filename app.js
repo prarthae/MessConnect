@@ -1,13 +1,12 @@
 const express = require("express");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 // Connect to MongoDB
-const connectDB=require('./config/dbconnection');
+const connectDB = require("./config/dbconnection");
 connectDB();
 
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const app = express();
-
 
 // Middleware
 app.set("view engine", "ejs");
@@ -22,14 +21,16 @@ app.use(
   })
 );
 
+
+
 // Routes
 const indexRouter = require("./routes/index");
-const ownerRouter=require("./routes/owner");
+const ownerRouter = require("./routes/owner");
 const menuRoutes = require("./routes/menu");
 
 app.use("/", menuRoutes);
 app.use("/", indexRouter);
-app.use("/",ownerRouter);
+app.use("/", ownerRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;

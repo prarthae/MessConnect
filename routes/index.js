@@ -4,14 +4,12 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const Student = require("../models/student");
 const Owner = require("../models/owner");
-const Menu=require("../models/menu")
+const Menu = require("../models/menu");
+const { checkOwnerAuth } = require("../middleware/auth");
 
 // Regular expressions for email and phone validation
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9]{10}$/;
-
-
-
 
 // Home Page
 router.get("/", (req, res) => {
@@ -151,7 +149,7 @@ router.post("/login", async (req, res) => {
   } else if (role === "owner") {
     const owner = await Owner.findOne({ email, password });
     if (owner) {
-      req.session.ownerId=owner._id;
+      req.session.ownerId = owner._id;
       res.redirect("/owner_dashboard"); // Create this route as needed
     } else {
       res.send("Invalid username or password");
@@ -164,5 +162,8 @@ router.get("/select_your_mess", (req, res) => {
   res.render("select_your_mess");
 });
 
+router.get("/owner_dasboard", checkOwnerAuth, (req, res) => {
+  res.render("owner_dashboard");
+});
 
 module.exports = router;
