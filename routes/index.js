@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const Student = require("../models/student");
 const Owner = require("../models/owner");
-const Menu=require("../models/menu")
+const Menu = require("../models/menu")
 
 // Regular expressions for email and phone validation
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -60,7 +60,9 @@ router.post("/register_student", async (req, res) => {
     return res.send("Invalid email format.");
   }
 
+  console.log(phoneNumber, phoneRegex.test(phoneNumber));
   if (!phoneRegex.test(phoneNumber)) {
+
     return res.send("Phone number must be 10 digits.");
   }
 
@@ -105,6 +107,7 @@ router.post("/register_owner", async (req, res) => {
   if (!emailRegex.test(email)) {
     return res.send("Invalid email format.");
   }
+  console.log(phoneNumber, phoneRegex.test(phoneNumber));
 
   if (!phoneRegex.test(phoneNumber)) {
     return res.send("Phone number must be 10 digits.");
@@ -151,7 +154,7 @@ router.post("/login", async (req, res) => {
   } else if (role === "owner") {
     const owner = await Owner.findOne({ email, password });
     if (owner) {
-      req.session.ownerId=owner._id;
+      req.session.ownerId = owner._id;
       res.redirect("/owner_dashboard"); // Create this route as needed
     } else {
       res.send("Invalid username or password");
