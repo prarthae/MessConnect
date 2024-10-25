@@ -1,0 +1,235 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles for Select Your Mess Page */
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+}
+
+.card h2 {
+    color: #0d0a0a;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #218838;
+}
+
+/* Styles for Login Page */
+.login-container {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #1c1414;
+    text-align: center; /* Center the heading */
+
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    align-items: center; 
+}
+
+/* Button styling for login */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Registration links */
+.box{
+    padding: 50px;
+    background-color: #bde1fc;
+}
+
+.butt{
+    background-color: #17a3db;
+}
+.registration-links {
+    margin-top: 20px;
+}
+
+.registration-links p {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown (select) styling */
+select {
+    background-color: #f8f9fa;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 500px) {
+    .login-container {
+      width: 100%;
+      margin: 10px;
+    }
+}
+
+/* Ensure the Select Your Mess page is also responsive */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Owner Registration Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    margin: 20px auto;
+    
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+/* Flexbox for label and input */
+.form-group {
+    display: flex;
+    align-items: center; /* Center aligns the items vertically */
+    margin-bottom: 20px;
+}
+
+label {
+    flex: 1; /* Takes up 30% of space */
+    margin-right: 10px; /* Space between label and input */
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    flex: 2; /* Takes up 70% of space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 5px; /* Rounds the corners */
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 500px) {
+    form {
+        width: 100%;
+        margin: 10px;
+    }
+}
+.styly{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #17a3db;
+    padding-left: 50px;
+    padding-right: 10px;
+}
+
+
+

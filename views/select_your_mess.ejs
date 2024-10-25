@@ -1,1 +1,57 @@
-<h1>hiii.........</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Your Meal</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1><center>Select Your Meal Type</center></h1>
+
+    <!-- Add date input to select a date -->
+    <div>
+      <label for="selectedDate">Select Date:</label>
+      <input type="date" id="selectedDate" name="selectedDate" required />
+    </div>
+
+    <!-- Meal type selection -->
+    <div class="card-container">
+      <div class="card">
+        <h2>Breakfast</h2>
+        <p>Delicious breakfast options await you!</p>
+        <button class="button" onclick="redirectToMenu('breakfast')">
+          View Menu
+        </button>
+      </div>
+      <div class="card">
+        <h2>Lunch</h2>
+        <p>Enjoy a fulfilling lunch with us!</p>
+        <button class="button" onclick="redirectToMenu('lunch')">
+          View Menu
+        </button>
+      </div>
+      <div class="card">
+        <h2>Dinner</h2>
+        <p>Indulge in a delightful dinner!</p>
+        <button class="button" onclick="redirectToMenu('dinner')">
+          View Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- Script to handle date selection and redirection -->
+    <script>
+      function redirectToMenu(mealType) {
+        const selectedDate = document.getElementById("selectedDate").value;
+        if (!selectedDate) {
+          alert("Please select a date!");
+          return;
+        }
+
+        // Redirect to the menu page with the selected date as a query parameter
+        window.location.href = `/menu/${mealType}?selectedDate=${selectedDate}`;
+      }
+    </script>
+  </body>
+</html>

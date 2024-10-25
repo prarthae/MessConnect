@@ -3,56 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu for <%= menu.mealType %></title>
+    <title>Menu</title>
   </head>
   <body>
-    <h1>Menu for <%= menu.mealType %></h1>
+    <h1>Menu for <%= mealType %></h1>
 
-    <h2>Select Date:</h2>
-    <input
-      type="date"
-      id="datePicker"
-      value="<%= selectedDate || new Date().toISOString().split('T')[0] %>"
-    />
-    <button onclick="updateDate()">Show Menu</button>
-
-    <script>
-      function updateDate() {
-        const selectedDate = document.getElementById("datePicker").value;
-        const url = window.location.href.split("?")[0]; // Base URL without query
-        window.location.href = `${url}?date=${selectedDate}`; // Redirect with selected date
-      }
-    </script>
-
-    <% if (menu) { %> <% const mealDays = ['monday', 'tuesday', 'wednesday',
-    'thursday', 'friday', 'saturday', 'sunday']; %> <% mealDays.forEach(day => {
-    %>
-    <h2><%= day.charAt(0).toUpperCase() + day.slice(1) %></h2>
     <ul>
-      <% if (menu.days[day] && menu.days[day].length > 0) { %> <%
-      menu.days[day].forEach(item => { %>
-      <li><%= item.item %> - <%= item.price %> Rs</li>
-      <% }) %> <% } else { %>
-      <li>
-        No items available for <%= day.charAt(0).toUpperCase() + day.slice(1) %>
-      </li>
+      <% if (menuItems && menuItems.length > 0) { %> <%
+      menuItems.forEach(function(item) { %>
+
+      <h2>Mess Name: <%= item.mess %></h2>
+      <li>Items : <%= item.item %></li>
+      <li>Price: ₹<%= item.price %></li>
+      <% }); %> <% } else { %>
+      <li>No menu items available for the selected date.</li>
       <% } %>
     </ul>
-    <% }) %>
-
-    <!-- Add "Order Now" button logic -->
-    <h3>Order Now</h3>
-    <button onclick="orderNow()">Order Now</button>
-
-    <script>
-      function orderNow() {
-        // Implement order functionality here
-        alert("Order Now button clicked!");
-        // You can redirect or handle the order logic here.
-      }
-    </script>
-    <% } else { %>
-    <p>No menu available for the selected date.</p>
-    <% } %>
   </body>
 </html>

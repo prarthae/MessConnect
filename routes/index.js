@@ -4,12 +4,14 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const Student = require("../models/student");
 const Owner = require("../models/owner");
-const Menu = require("../models/menu");
-const { checkOwnerAuth } = require("../middleware/auth");
+const Menu = require("../models/menu")
 
 // Regular expressions for email and phone validation
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9]{10}$/;
+
+
+
 
 // Home Page
 router.get("/", (req, res) => {
@@ -58,7 +60,9 @@ router.post("/register_student", async (req, res) => {
     return res.send("Invalid email format.");
   }
 
+  console.log(phoneNumber, phoneRegex.test(phoneNumber));
   if (!phoneRegex.test(phoneNumber)) {
+
     return res.send("Phone number must be 10 digits.");
   }
 
@@ -103,6 +107,7 @@ router.post("/register_owner", async (req, res) => {
   if (!emailRegex.test(email)) {
     return res.send("Invalid email format.");
   }
+  console.log(phoneNumber, phoneRegex.test(phoneNumber));
 
   if (!phoneRegex.test(phoneNumber)) {
     return res.send("Phone number must be 10 digits.");
@@ -162,8 +167,5 @@ router.get("/select_your_mess", (req, res) => {
   res.render("select_your_mess");
 });
 
-router.get("/owner_dasboard", checkOwnerAuth, (req, res) => {
-  res.render("owner_dashboard");
-});
 
 module.exports = router;
